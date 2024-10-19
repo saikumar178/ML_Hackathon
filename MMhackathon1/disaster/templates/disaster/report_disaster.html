@@ -1,0 +1,136 @@
+<!-- disaster/templates/disaster/report_disaster.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Disaster</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #e3f2fd, #bbdefb); /* Light blue gradient */
+            margin: 0;
+            padding: 20px;
+            color: #333; /* Dark text color */
+            animation: fadeIn 1s ease; /* Fade-in effect */
+        }
+
+        h2 {
+            color: #007bff; /* Primary color for headings */
+            text-align: center;
+            margin-bottom: 20px;
+            animation: slideIn 0.5s ease; /* Slide-in effect */
+        }
+
+        .form-container {
+            max-width: 600px; /* Maximum width for the form */
+            margin: 0 auto; /* Center the form */
+            background: white; /* White background for the form */
+            padding: 30px; /* Padding around the form */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            animation: scaleIn 0.5s ease; /* Scale-in effect */
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%; /* Full width for input fields */
+            padding: 12px; /* Padding for input fields */
+            margin: 10px 0; /* Margin around input fields */
+            border: 1px solid #ddd; /* Light border */
+            border-radius: 5px; /* Rounded corners */
+            box-sizing: border-box; /* Include padding in width */
+            transition: border-color 0.3s; /* Smooth transition for border color */
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #007bff; /* Change border color on focus */
+            outline: none; /* Remove default outline */
+        }
+
+        button {
+            padding: 12px 15px;
+            background-color: #007bff; /* Primary color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%; /* Full width for the button */
+            font-size: 16px; /* Larger font size */
+            transition: background-color 0.3s; /* Smooth background transition */
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Darker shade on hover */
+            transform: translateY(-2px); /* Slight lift on hover */
+        }
+
+        a {
+            text-decoration: none; /* Remove underline from link */
+            color: #007bff; /* Link color */
+            display: block; /* Block display for easy clicking */
+            text-align: center; /* Center text in the link */
+            margin-top: 20px; /* Space above the link */
+            transition: color 0.3s; /* Smooth color transition */
+        }
+
+        a:hover {
+            text-decoration: underline; /* Underline on hover */
+            color: #0056b3; /* Darker shade on hover */
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Report a Disaster</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+        <a href="{% url 'home' %}">Back to Home</a>
+    </div>
+</body>
+
+</html>

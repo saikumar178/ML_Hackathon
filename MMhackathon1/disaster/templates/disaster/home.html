@@ -1,0 +1,15 @@
+<!-- disaster/templates/disaster/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Response Platform</title>
+</head>
+<body>
+    <h1>Welcome to the Collaborative Disaster Response Platform</h1>
+    <p>Connect with volunteers and local organizations during disasters.</p>
+    <p>Total Volunteers Registered: {{ volunteer_count }}</p>  <!-- Display the count -->
+    <a href="{% url 'register_volunteer' %}">Register as a Volunteer</a>
+</body>
+</html>

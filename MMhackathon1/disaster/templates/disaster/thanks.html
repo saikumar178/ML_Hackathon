@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff; /* Light blue background */
+            color: #333; /* Darker text color for contrast */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background: white; /* White background for the container */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+            padding: 20px;
+            width: 300px; /* Fixed width for the container */
+        }
+        h1 {
+            font-size: 24px; /* Bigger font for the heading */
+            margin-bottom: 20px; /* Space below the heading */
+        }
+        a.button {
+            display: inline-block; /* Makes it behave like a button */
+            padding: 10px 20px; /* Padding around the text */
+            background-color: #4CAF50; /* Green background */
+            color: white; /* White text color */
+            text-decoration: none; /* Remove underline */
+            border-radius: 5px; /* Rounded corners for the button */
+            transition: background-color 0.3s; /* Smooth background change */
+        }
+        a.button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Thank You!</h1>
+        <a href="{% url 'index' %}" class="button">Go to Home</a> <!-- Ensure this points to your correct home view -->
+    </div>
+</body>
+</html>

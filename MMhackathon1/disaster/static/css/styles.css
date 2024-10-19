@@ -1,0 +1,86 @@
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #f8f9fa;
+    --text-color: #212529;
+    --card-shadow: rgba(0, 0, 0, 0.1);
+    --font-family: 'Arial', sans-serif;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    background-color: var(--secondary-color);
+}
+
+header {
+    background-color: var(--primary-color);
+    padding: 1rem;
+    text-align: center;
+    color: white;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.dashboard {
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem;
+}
+
+.card {
+    background-color: white;
+    box-shadow: 0 0 10px var(--card-shadow);
+    padding: 2rem;
+    width: 30%;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.map-container {
+    width: 100%;
+    height: 400px;
+    margin: 2rem 0;
+}
+
+.register-form {
+    background-color: white;
+    margin: 2rem auto;
+    padding: 2rem;
+    max-width: 500px;
+    box-shadow: 0 0 10px var(--card-shadow);
+    border-radius: 8px;
+}
+
+.register-form input, .register-form button {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+.map-container {
+    height: 400px; /* Set the height of the map */
+    width: 100%;   /* Full width */
+}

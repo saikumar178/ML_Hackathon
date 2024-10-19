@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Aid Connect</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="{% static 'js/script.js' %}" defer></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #e3f2fd, #bbdefb); /* Light blue gradient */
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background: #2196f3; /* Primary color */
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        .dashboard {
+            display: flex;
+            justify-content: space-around;
+            padding: 40px 20px;
+            flex-wrap: wrap; /* Allow wrapping */
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 280px; /* Fixed width for cards */
+            margin: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #2196f3; /* Match header color */
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #4caf50; /* Green button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            display: inline-block;
+            margin-top: 10px; /* Space above buttons */
+        }
+
+        button:hover {
+            background-color: #388e3c; /* Darker green on hover */
+            transform: scale(1.05);
+        }
+
+        a {
+            text-decoration: none; /* Remove underline from link */
+        }
+
+        .map-container {
+            height: 400px;
+            margin: 40px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border: 2px solid #2196f3; /* Add border to map */
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #2196f3; /* Primary color */
+            color: white;
+            position: relative;
+            margin-top: 20px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Add some responsive styles */
+        @media (max-width: 768px) {
+            .dashboard {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 90%; /* Full width on smaller screens */
+            }
+        }
+    </style>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABcmMeRf7PThFOFKQMyOQLu68UokiOOhU"></script>
+    <script>
+        function initMap() {
+            const location = { lat: -34.397, lng: 150.644 }; // Example coordinates
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 8,
+                center: location,
+            });
+            new google.maps.Marker({
+                position: location,
+                map: map,
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <h1>Disaster Aid Connect</h1>
+            <ul class="nav-links">
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#googleMap">Map</a></li>
+                <li><a href="{% url 'register_volunteer' %}">Volunteer</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="dashboard" class="dashboard">
+        <div class="card">
+            <h2>Active Disasters</h2>
+            <p id="disaster-count">
+                <a href="{% url 'report_disaster' %}">
+                    <button>Report a Disaster</button>
+                </a>
+                <a href="{% url 'disaster_list' %}">
+                    <button>View Reported Disasters</button>
+                </a>
+            </p>
+        </div>
+        <div class="card">
+            <h2>Volunteers Registered</h2>
+            <p>Total Volunteers Registered: {{ volunteer_count }}</p>  <!-- Display user-specific count -->
+        </div>
+    </section>
+
+    <section id="googleMap" class="map-container"></section>
+
+    <footer>
+        <p>&copy; 2024 Disaster Response Platform</p>
+    </footer>
+</body>
+
+</html>
